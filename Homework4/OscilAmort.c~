@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+//--------
+double pi=3.141592654,y,k,v,dt,tf,a;
+double m=38.03421,k1=5000,r=0.02,n1=0.391,n2=0.00105; //datos del problema
+FILE *oscilador;
+
+void main()
+{
+  oscilador = fopen("osciladorAmortiguado.dat","w");
+
+  //--------VALORES INICIALES---------
+  double y0 = 0.03;
+  double v0 = 0.;
+  double t = 1;
+
+  double j1 = (6*pi*n1*r)/m;//gamma 1 entre m
+  double j2 = (6*pi*n2*r)/m;//gamma 2 entre m
+  double k = k1/m;
+  //---------
+
+  a = -j1*v0-k*y0;
+  v = v0 + a*dt;
+  y = y0 + v*dt;
+
+  tf = 500.;
+  dt = 10.;
+
+  while(t<tf)
+    {
+      a = -j1*v-k*y;
+      v = v+2*a*dt;
+      y = y+2*v*dt;
+      t = t+dt;
+
+      fprintf(oscilador,"%lf %lf %lf\n",t,y,v);
+    }
+  fclose(oscilador);
+}

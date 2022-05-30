@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+//----
+int i=0,nmin,nmax,n,;
+//----
+
+void main()
+{
+  printf("Cuantos numeros aleatorios desea revisar? ");
+  scanf("%d",&n);
+  printf("Introduzca el intervalo para los numeros aleatorios\n");
+  printf("Nmin: ");
+  scanf("%d",&nmin);
+  printf("Nmax: ");
+  scanf("%d",&nmax);
+
+  while(i<=n)
+    {
+      r = rand()%(nmax-nmin+1);
+    }
+}
